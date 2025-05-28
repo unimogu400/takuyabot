@@ -2,9 +2,8 @@ import discord
 from discord.ext import commands
 from discord.ext import tasks
 
+import os
 import random
-
-DISCORD_TOKEN = ''
 
 client = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
@@ -28,4 +27,6 @@ async def on_message(message):
         if rdm < 4:
             await message.channel.send('これはおおだろ')
 
-client.run(DISCORD_TOKEN)
+TOKEN = os.getenv('DISCORD_TOKEN')
+
+client.run(TOKEN)
